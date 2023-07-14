@@ -1,26 +1,34 @@
-import React from 'react';
-import classes from './HeroComponent.module.css';
-import Emage from '../assets/Image.jpg';
+import React from "react";
+import classes from "./HeroComponent.module.css";
+import Emage from "../../assets/Image.jpg";
+import Heading from "../Heading/Heading";
 
- 
-const Hero = ({ title, description, image }) => {
+const Hero = ({
+  title,
+  description,
+  image,
+  bgColor,
+  headingProps,
+  subHeadingProps,
+}) => {
+  const { text: headingText, variant: headingVariant } = headingProps;
+  const { text: subHeadingText, variant: subHeadingVariant } = subHeadingProps;
   return (
-    <div className={classes.hero}>
+    <div
+      className={classes.hero}
+      style={{ backgroundImage: `url(${image})`, backgroundColor: bgColor }}
+    >
       <div className="hero-content">
-        <h1 className={classes.hero-title}>{title}</h1>
-        {/* <Typography variant="h1" title={title} />
-        <Typography variant="h2" title={description} /> */}
-        <h2 className={classes.hero-description}>{description}</h2>
-      </div>
-      <div className={classes["hero-image"]}>
-      <img  src={Emage} alt="Hero" />
-      </div>
-      <div>
-        <button>Submit</button>
+        <div>
+          <Heading text={headingText} variant={headingVariant} />
+          <Heading text={subHeadingText} variant={subHeadingVariant} />
+        </div>
+        <div>
+          <button>Submit</button>
+        </div>
       </div>
     </div>
-    
   );
-}
- 
+};
+
 export default Hero;
